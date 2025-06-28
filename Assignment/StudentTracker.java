@@ -41,15 +41,26 @@ public class StudentTracker {
                     attendanceList.forEach(student -> System.out.println(student.getName()));
                     break;
                 case 4:
-                    System.out.println("Please enter the name of the student:");
+                    System.out.println("Please enter the name 2of the student:");
                     String nameToCheck = sc.nextLine();
 
-                    boolean found = attendanceList.stream().anyMatch(student -> student.getName().equals(nameToCheck));
-                    if (found) {
-                        System.out.println("Attendance found");
-                    } else {
-                        System.out.println("Attendance not found");
+                    Iterator<Student> iterator = attendanceList.iterator();
+                    while (iterator.hasNext()) {
+                        if (iterator.next().getName().equals(nameToCheck))
+                            System.out.println("Student Present");
+                        break;
                     }
+
+                    System.out.println("Student Not Present");
+                    break;
+
+
+//                    boolean found = attendanceList.stream().anyMatch(student -> student.getName().equals(nameToCheck));
+//                    if (found) {
+//                        System.out.println("Attendance found");
+//                    } else {
+//                        System.out.println("Attendance not found");
+//                    }
 
                 case 5:
                     break;
