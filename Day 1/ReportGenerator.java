@@ -1,4 +1,4 @@
-package Day1
+package Day1;
 public class ReportGenerator {
     private String studentName;
     private Integer rollNo;
