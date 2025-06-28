@@ -18,6 +18,7 @@ public class StudentTracker {
 
             Scanner sc = new Scanner(System.in);
             int choice = sc.nextInt();
+            sc.nextLine();
             switch (choice) {
                 case 1:
                     System.out.println("Please enter the name of the student:");
@@ -27,31 +28,29 @@ public class StudentTracker {
                     break;
                 case 2:
                     System.out.println("Please enter the name of the student:");
-                    Scanner removeName = new Scanner(System.in);
-                    attendanceList.remove(removeName.nextLine());
-                    attendanceList.forEach(student -> System.out.println(student.getName()));
+                    String nameToRemove = sc.nextLine();
+                    boolean removed = attendanceList.removeIf(s -> s.getName().equals(nameToRemove));
+                    if(removed) {
+                        System.out.println("Student Removed Successfully");
+                    }
+                    else {
+                        System.out.println("Student Not Found");
+                    }
                     break;
                 case 3:
                     attendanceList.forEach(student -> System.out.println(student.getName()));
                     break;
                 case 4:
                     System.out.println("Please enter the name of the student:");
-                    Scanner nameToCheck = new Scanner(System.in);
-                    Iterator<Student> iterator = attendanceList.iterator();
-                    boolean found = false;
-                    while (iterator.hasNext()) {
-                        Student s = iterator.next();
-                        if (s.getName().equals(nameToCheck)) {
-                            found = true;
-                            break;
-                        }
-                    }
+                    String nameToCheck = sc.nextLine();
+
+                    boolean found = attendanceList.stream().anyMatch(student -> student.getName().equals(nameToCheck));
                     if (found) {
-                        System.out.println(nameToCheck + " attended the class.");
+                        System.out.println("Attendance found");
                     } else {
-                        System.out.println(nameToCheck + " did not attend the class.");
+                        System.out.println("Attendance not found");
                     }
-                    break;
+
                 case 5:
                     break;
             }
