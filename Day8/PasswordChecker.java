@@ -7,7 +7,8 @@ public class PasswordChecker {
         if(password.length() < 6) {
 
             throw new PasswordFormatException("Invalid password");
-            //throw new IllegalArgumentException("Minimum length should be 6"); //unchecked exception, because it is compiling even without try-catch or throws
+            //throw new IllegalArgumentException("Minimum length should be 6");
+            //unchecked exception, because it is compiling even without try-catch or throws
         } else if (!password.matches(rule)) {
             throw new PasswordFormatException("Invalid password");
 
@@ -17,7 +18,7 @@ public class PasswordChecker {
         return true;
     }
     public static void main(String[] args) throws PasswordFormatException {
-        String password = "aB123";
+        String password = "aBcc123";
         PasswordChecker test = new PasswordChecker();
         System.out.println(test.check(password));
 
